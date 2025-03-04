@@ -1,0 +1,20 @@
+CompileFlags:
+  Add: 
+    - "-std=c23" 
+    - "-Wno-format"
+    - "-Wno-unused-includes"
+    - "-Wno-incompatible-pointer-types"
+    - "-IC:/glfw-3.4.bin.WIN64/include" 
+    - "-IC:/Vulkan-Headers-vulkan-sdk-1.4.304.0/include"     
+    - "-IC:/glad/include" 
+    - "-DCAMERA_IMPLEMENTATION"
+    - "-DWF_IMPLEMENTATION"    
+    - "-DMODEL_SQUARE_IMPLEMENTATION"    
+    - "-DBUFFER_IMPLEMENTATION"
+    - "-DMODEL_LINE_IMPLEMENTATION"
+    - "-DARRAYS_IMPLEMENTATION"
+    - "-I../external" 
+    - "-I../include"
+    - "-IC:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.42.34433/include"
+Diagnostics:
+  Suppress: pp_hash_error    
