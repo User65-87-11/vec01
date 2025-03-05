@@ -1,31 +1,22 @@
 #pragma warning(disable: 4996)
 
-
-#define GLFW_INCLUDE_NONE
-#define CAMERA_IMPLEMENTATION
-#define SHADER_IMPLEMENTATION
-#define TINYOBJ_LOADER_C_IMPLEMENTATION
-#define WF_IMPLEMENTATION
-#define MODEL_SQUARE_IMPLEMENTATION
-#define BUFFER_IMPLEMENTATION
-#define MODEL_LINE_IMPLEMENTATION
-#define LIST_IMPLEMENTATION
  
  
-
-
 
 #include <stdio.h>
 #include <GLFW/glfw3.h>
 #include <glad/gl.h>
 #include <stdlib.h>
-
+#include "cglm/cglm.h"
+#include "buffer.h"
 
 #include "test.h"
 #include "camera.h"
 #include "shader.h"
+
 #include "model_square.h"
 #include "model.h"
+
 
 static void error_callback(int error, const char* description);
 static void mouse_callback(GLFWwindow * w, double xpos, double ypos);
@@ -119,9 +110,12 @@ int main(){
   
 
 	model_init(&model);
-	model_circle_add(model,1,1,2);
+	model_circle_add(model,0,0,1);
+	model_rect_add(model,4,4,1);
 
-	printf("num inst %i\n",model->num_inst);
+	model_rect_add(model,-2,-2,2);
+
+ 
 	//---------
 	 
 	float last_time =glfwGetTime();
@@ -130,6 +124,7 @@ int main(){
 
 	framebuffer_size_callback(window,SCR_WIDTH,SCR_HEIGHT);
 	
+	glPointSize(2);
 
 
     while (!glfwWindowShouldClose(window)){
@@ -171,15 +166,24 @@ int main(){
 
 		glBindVertexArray(model_square->VAO);
 
-		glDrawArrays(GL_TRIANGLES,0,6);
+	//	glDrawArrays(GL_TRIANGLES,0,6);
 
 
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); // Restore fill mode
 		//_________END_DRAW_MODEL_SQUARE
 
 		//----DRAW_MODEL_LINE
-		glBindVertexArray(model->VAO);
-		glDrawArraysInstanced(GL_LINE_LOOP,0,model->seg_num,model->num_inst);
+		glBindVertexArray(model->VAO_CIRCLE);
+		glDrawArraysInstanced(GL_LINE_LOOP,0,model->point_num_circ,model->num_inst_circle);
+
+		glBindVertexArray(model->VAO_RECT);
+		glDrawArraysInstanced(GL_LINE_LOOP,0,model->point_num_rect,model->num_inst_rect);
+
+
+		glBindVertexArray(model->VAO_LINE);
+		glDrawArraysInstanced(GL_LINE,0,model->point_num_line,model->num_inst_line);
+
+		// draw lines and disable matrix
 
 		//----END_DRAW_MODEL_LINE
 

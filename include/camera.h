@@ -27,8 +27,6 @@ void cam_move_to(Camera cam[static 1],float x,float y);
 void cam_screen_size(Camera cam[static 1],int w,int h);
 void cam_init(Camera *cam[static 1]);
 void cam_free(Camera *cam[static 1]);
- 
-
 
 
 
@@ -45,7 +43,6 @@ void cam_free(Camera *cam[static 1]);
 #include "cglm/types.h"
 #include "cglm/util.h"
  
-
  
 
 void  cam_init(Camera *cam[static 1]){
@@ -142,4 +139,5 @@ void cam_move_to(Camera cam[static 1],float x,float y){
 	printf("cam pos: %f %f \n", pos[0], pos[1]);
  
 }
+ 
 #endif

@@ -1,11 +1,11 @@
 #pragma once
  
-#ifdef ARRAYS_IMPLEMENTATION
+ 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#endif
+ 
 #include <stdarg.h>
 
  
@@ -25,10 +25,20 @@ void array_append(Array arr [static 1],float * data,size_t len);
 void array_insert(Array arr [static 1],float * data, size_t len, size_t pos);
 
 void array_free(Array arr [static 1]);
+
+
+
+#ifdef ARRAY_IMPLEMENTATION
  
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-#ifdef ARRAYS_IMPLEMENTATION
-
+ 
+#include <stdarg.h>
+ 
+ 
+  
 Array array_create(size_t size){
  
 	Array  arr ={0};
@@ -62,43 +72,43 @@ void array_insert(Array arr [static 1], float s[static 1],size_t len,size_t pos)
 	printf("array_insert\n");
 	
 	 
-	size_t left = inst.capacity - inst.len  ;
+	size_t left = arr->capacity - arr->len  ;
 	printf("ins.str:%s\n",s);
-	printf("b.str:%s\n",inst.data);
+	printf("b.str:%s\n",arr->data);
 	print_array(arr);
 	printf("ins: cap:%d, b.len:%d, left:%d, s.len:%d, pos:%d \n",
-		inst.capacity,
-		inst.len,
+		arr->capacity,
+		arr->len,
 		left,
 		len,
 		pos
 	);
 	if(len >= left)
 	{
-		size_t new_cap = inst.capacity * 2 ;
-		if( inst.capacity / len == 0)
+		size_t new_cap = arr->capacity * 2 ;
+		if( arr->capacity / len == 0)
 		{
 			new_cap = len * 2 ;
 		}
 	 
 
 		//printf("new cap:%d\n",new_cap);
-		inst.data = realloc(inst.data,new_cap);
-		inst.capacity = new_cap;
+		arr->data = realloc(arr->data,new_cap);
+		arr->capacity = new_cap;
 	
 	}
-	if(pos < inst.len)
+	if(pos < arr->len)
 	{
 
-		memcpy(&inst.data[inst.len],&inst.data[pos] , len);
-		memcpy(&inst.data[pos], s, len);
+		memcpy(&arr->data[arr->len],&arr->data[pos] , len);
+		memcpy(&arr->data[pos], s, len);
 		
 	}else {
-		memcpy(&inst.data[pos], s, len);
+		memcpy(&arr->data[pos], s, len);
 	}
-	inst.len+= len;
+	arr->len+= len;
  
-	*arr = inst;
+ 
 };
 
 void array_free(Array arr [static 1]){
@@ -110,7 +120,5 @@ void array_free(Array arr [static 1]){
 	*arr=(Array){0};
 }
  
-  
+   
 #endif
-
- 

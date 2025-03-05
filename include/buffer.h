@@ -9,24 +9,26 @@ typedef unsigned int ui32;
 
 
 
-void buffer_describe_vec2(ui32 buffer_id, ui32 target, ui32 att_div, ui32 att_pos);
-void buffer_describe_vec3(ui32 buffer_id, ui32 target, ui32 att_div, ui32 att_pos);
-void buffer_describe_vec4(ui32 buffer_id, ui32 target, ui32 att_div, ui32 att_pos);
-void buffer_describe_mat4(ui32 buffer_id, ui32 target, ui32 att_div, ui32 att_pos);
+extern void buffer_describe_vec2(ui32 buffer_id, ui32 target, ui32 att_div, ui32 att_pos);
+extern void buffer_describe_vec3(ui32 buffer_id, ui32 target, ui32 att_div, ui32 att_pos);
+extern void buffer_describe_vec4(ui32 buffer_id, ui32 target, ui32 att_div, ui32 att_pos);
+extern void buffer_describe_mat4(ui32 buffer_id, ui32 target, ui32 att_div, ui32 att_pos);
  
-void buffer_describe_int(ui32 buffer_id, ui32 target, ui32 att_div, ui32 att_pos);
-void buffer_describe_uint(ui32 buffer_id, ui32 target, ui32 att_div, ui32 att_pos);
-void buffer_describe_float(ui32 buffer_id, ui32 target, ui32 att_div, ui32 att_pos);
+extern void buffer_describe_int(ui32 buffer_id, ui32 target, ui32 att_div, ui32 att_pos);
+extern void buffer_describe_uint(ui32 buffer_id, ui32 target, ui32 att_div, ui32 att_pos);
+extern void buffer_describe_float(ui32 buffer_id, ui32 target, ui32 att_div, ui32 att_pos);
 
-void buffer_set_data(ui32 buffer_id, ui32 target,ui32 size, void  * data, ui32 gl_type);
-void buffer_set_subdata(ui32 buffer_id,ui32 target ,ui32 size, void  * data, ui32 offest);
-void buffer_set_data_a(ui32 array_id,ui32 buffer_id, ui32 target,ui32 size, void  * data, ui32 gl_type);
-void buffer_set_subdata_a(ui32 array_id,ui32 buffer_id,ui32 target ,ui32 size, void  * data, ui32 offest);
+extern void buffer_set_data(ui32 buffer_id, ui32 target,ui32 size, void  * data, ui32 gl_type);
+extern void buffer_set_subdata(ui32 buffer_id,ui32 target ,ui32 size, void  * data, ui32 offest);
+extern void buffer_set_data_a(ui32 array_id,ui32 buffer_id, ui32 target,ui32 size, void  * data, ui32 gl_type);
+extern void buffer_set_subdata_a(ui32 array_id,ui32 buffer_id,ui32 target ,ui32 size, void  * data, ui32 offest);
 
 
 #define buffer_describe(T) buffer_describe_ ## T
- 
+
+
 #ifdef BUFFER_IMPLEMENTATION
+ 
 
  
 void buffer_describe_vec3(ui32 buffer_id, ui32 target,  ui32 att_div, ui32 att_pos){
@@ -164,5 +166,7 @@ void buffer_set_data_a(ui32 arr_id,ui32 buffer_id, ui32 target,ui32 size, void  
 }
 
  
-#endif
+ 
 
+
+#endif

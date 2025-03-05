@@ -31,19 +31,22 @@ void shader_bind_ubo(const char* block_name,unsigned int ubi_id);
 
 void shader_bind_ubo_shader_bind(const char* block_name,unsigned int ubi_id, unsigned int shader_binding);
 
+
+
+
 #ifdef SHADER_IMPLEMENTATION
-#include "cglm/types.h"
+ 
+
 #include <glad/gl.h>
 #include <cglm/cglm.h>
 
 #include <stdlib.h>
- 
 
- 
 
 #include <stdio.h>
 #include <string.h>
- 
+
+#include "cglm/types.h"
  
  
 static unsigned int current_shader_id;
@@ -259,4 +262,5 @@ void shader_checkCompileErrors(unsigned int id, const char type[static 1])
 	}
 }
 
-#endif 
+ 
+#endif

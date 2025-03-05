@@ -10,7 +10,7 @@ target_sources(
     main.c
 )
 
-file(GLOB SRC_FILES ../src/test.c)
+file(GLOB SRC_FILES ../src/*.c)
 
 target_sources(
 	main PRIVATE

@@ -1,10 +1,10 @@
 #pragma  once
 
-#include "camera.h"
-#include "cglm/affine-pre.h"
-#include "cglm/mat4.h"
+ 
+ 
 #include "cglm/types.h"
 #include <glad/gl.h>
+
 
 typedef struct  Model_square Model_square;
 
@@ -38,19 +38,22 @@ void model_square_free(Model_square * model[static 1]);
 Model_square_inst model_square_inst(Model_square  model[static 1],int  idx);
 void model_square_update(Model_square [static 1]);
 
-
-
 #ifdef MODEL_SQUARE_IMPLEMENTATION
+ 
 #include <assert.h> 
 #include <stddef.h>
 #include <stdlib.h>
 #include "buffer.h"
+#include "cglm/affine.h"
+#include "cglm/affine-pre.h"
+#include "cglm/mat4.h"
 #include "wavefront.h"
-
+#include "camera.h"
 #include <stdio.h>
  
 #include <limits.h>
 
+ 
 
 extern Camera * camera;
 
@@ -183,4 +186,5 @@ void model_square_free(Model_square * model[static 1]){
 	free((*model)->inst_ids);
 	free(*model);
 }
+ 
 #endif

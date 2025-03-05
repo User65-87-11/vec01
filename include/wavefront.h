@@ -11,14 +11,14 @@ void wf_get_vert_data(WF * wf ,float ** data_out, size_t *len_out);
 void wf_get_norm_data(WF * wf,float ** data_out, size_t* len_out );
 void wf_get_textcoord_data(WF * wf ,float ** data_out, size_t *len_out);
 
-#ifdef WF_IMPLEMENTATION
-
+#ifdef WAVEFRONT_IMPLEMENTATION
 
 
 #include <assert.h> 
 #include <stdio.h>
 #include <stdlib.h>
 #include "tinyobj/tinyobj_loader_c.h"
+ 
 
 typedef struct WF{
 	tinyobj_attrib_t  attrib;
@@ -32,7 +32,6 @@ typedef struct WF{
 void wf_file_reader_handler(void *ctx, const char *filename, int is_mtl, const char *obj_filename, char **buf, size_t *len){
 	FILE * f ;
 	int err =  fopen_s(&f, filename, "rb");
-	printf("file error: %i\n",errno);
 	assert(err == 0);
 	fseek(f, 0, SEEK_END);
 	size_t size = ftell(f);
@@ -49,7 +48,7 @@ void wf_file_reader_handler(void *ctx, const char *filename, int is_mtl, const c
 
 void wf_load(WF ** wf, const char* fname){
 
-	printf("***wf_load\n");
+ 
 	*wf = calloc(1,sizeof(WF));
 	WF * ref = *wf;
 	tinyobj_parse_obj(
@@ -81,7 +80,7 @@ void wf_load(WF ** wf, const char* fname){
 }
 void wf_get_vert_data(WF * wf ,float * data_out[static 1], size_t *size_out){
  
-	printf("wf_get_vert_data\n");
+ 
  
 	
  
@@ -183,5 +182,6 @@ void wf_free(WF ** wf){
 	}
 	*wf = nullptr;
 }
+
 
 #endif

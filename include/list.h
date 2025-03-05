@@ -20,13 +20,13 @@ void list_del(List list[static 1], void * data);
 void list_ins_end(List list[static 1], void * data );
 void list_ins_beg(List list[static 1], void * data );
 
-
-
 #ifdef LIST_IMPLEMENTATION
-
+ 
+ 
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
+ 
  
 ListNode* createListNode(void * data );
 
@@ -114,5 +114,7 @@ void list_free(List * list[static 1]) {
     (*list) = nullptr;
  
 }
+
+ 
 
 #endif
