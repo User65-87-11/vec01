@@ -18,15 +18,11 @@ layout (std140, binding = 0) uniform Matrices
 
  
 
- 
-
 void main()
 {
- 
-   	gl_Position =  pv * model * vec4(vpos,1.0) ;
- 
 	
-    frag_color = vcol;
-	 
-	
+   	gl_Position =  pv  *model * vec4(vpos,1.0) ;
+  
+	frag_color = vcol;
+
 }

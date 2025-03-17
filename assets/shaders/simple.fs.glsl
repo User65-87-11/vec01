@@ -9,7 +9,7 @@ out vec4 out_color;
 
 void main()
 {    
-
+ 
 	out_color = frag_color;
 
 }

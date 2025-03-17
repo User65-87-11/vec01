@@ -1,6 +1,6 @@
 #pragma once
 
-#include "cglm/types.h"
+//#include "cglm/types.h"
 #include <glad/gl.h>
 #include <stdio.h>
 
@@ -102,16 +102,28 @@ void buffer_describe_mat4(ui32 buffer_id, ui32 target,   ui32 att_div, ui32 att_
 	glBindBuffer(target, buffer_id);
  
 	glEnableVertexAttribArray(att_pos); 
-    glVertexAttribPointer(att_pos, 4, GL_FLOAT, GL_FALSE,  sizeof(float) * 16, (void*)0);
+    glVertexAttribPointer(att_pos, 4, GL_FLOAT, GL_FALSE,  
+		sizeof(float[16]), 
+		(void*)0
+	);
 
     glEnableVertexAttribArray(att_pos+1); 
-    glVertexAttribPointer(att_pos+1, 4, GL_FLOAT, GL_FALSE, sizeof(float) * 16, (void*)(1 *  sizeof(float)*4));
+    glVertexAttribPointer(att_pos+1, 4, GL_FLOAT, GL_FALSE, 
+		sizeof(float[16]), 
+		(void*)(sizeof(float[4 * 1]))
+	);
 
     glEnableVertexAttribArray(att_pos+2); 
-    glVertexAttribPointer(att_pos+2, 4, GL_FLOAT, GL_FALSE,  sizeof(float) * 16, (void*)(2 * sizeof(float)*4));
+    glVertexAttribPointer(att_pos+2, 4, GL_FLOAT, GL_FALSE,  
+		sizeof(float[16]), 
+		(void*)(sizeof(float[4 * 2])*4)
+	);
 
     glEnableVertexAttribArray(att_pos+3); 
-    glVertexAttribPointer(att_pos+3, 4, GL_FLOAT, GL_FALSE,  sizeof(float) * 16, (void*)(3 * sizeof(float)*4));
+    glVertexAttribPointer(att_pos+3, 4, GL_FLOAT, GL_FALSE,  
+		sizeof(float[16]), 
+		(void*)(sizeof(float[4 * 3]))
+	);
 	
 
 	

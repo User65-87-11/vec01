@@ -10,12 +10,12 @@ target_sources(
     main.c
 )
 
-file(GLOB SRC_FILES ../src/*.c)
+# file(GLOB SRC_FILES ../src/*.c)
 
-target_sources(
-	main PRIVATE
-	${SRC_FILES}
-)
+# target_sources(
+# 	main PRIVATE
+# 	${SRC_FILES}
+# )
  
 target_include_directories(
     main PRIVATE 
